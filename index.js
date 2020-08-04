@@ -1,7 +1,8 @@
-//------------ぐるなびapikeyをここに入力してください
-APIKEY = process.env.APIKEY;
 const search_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/";//レストラン検索API
 const review_url = "https://api.gnavi.co.jp/PhotoSearchAPI/v3/";//応援口コミAPI
+require('dotenv').config(); //環境変数
+APIKEY = process.env.APIKEY; //ぐるなびapiのアクセスキー
+
 let http = require('http');
 let https = require('https');
 let fs = require('fs');

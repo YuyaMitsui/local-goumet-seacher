@@ -1,12 +1,10 @@
-const APIKEY = ''; //ぐるなびapikeyをここに入力してください
+//------------ぐるなびapikeyをここに入力してください
 const search_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/";//レストラン検索API
 const review_url = "https://api.gnavi.co.jp/PhotoSearchAPI/v3/";//応援口コミAPI
 let http = require('http');
 let https = require('https');
 let fs = require('fs');
 let ejs = require('ejs');
-let hostname = '127.0.0.1';
-let port = 3000;
 let server = http.createServer();
 
 //拡張子からcontent-typeの値を決める関数
@@ -241,6 +239,4 @@ server.on('request', function(req, res) {
   }
 });
 
-server.listen(port, hostname, function() {
-    console.log(`Server runnning at http://${hostname}:${port}/`);
-});
+server.listen(process.env.PORT || 8080);

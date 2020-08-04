@@ -4,13 +4,13 @@
   "description": "ぐるなびAPIを使ったレストラン検索webアプリケーション",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/YuyaMitsui/local-goumet-seacher.git"
   },
-  "author": "",
+  "author": "YuyaMitsui",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/YuyaMitsui/local-goumet-seacher/issues"

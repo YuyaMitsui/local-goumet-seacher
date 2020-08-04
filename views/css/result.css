@@ -15,7 +15,7 @@ body{
   font-weight: bold;
   margin-bottom: 1rem;
 }
-.hit-cnt span{
+.hit-cnt span:last-child{
   font-size: .5rem;
 }
 .pagenation-outer{

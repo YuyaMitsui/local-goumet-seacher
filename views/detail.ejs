@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>ぐるなびローカル検索</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="css/html5-doctor-reset-1.6.1.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <%-'<script src="https://kit.fontawesome.com/02fee29c1b.js" crossorigin="anonymous"></script>' %>
+</head>
+<body class="search-body">
+  <header>
+    <div class="">
+      <h1>ぐるなび ローカル検索</h1>
+      <p>GURUNAVI local search</p>
+    </div>
+  </header>
+  <div class="popup-fix">
+    <%
+      let range_value = ""; //デフォルト
+      switch (range) {
+        case '1':
+          range_value = 300;
+          break;
+        case '2':
+          range_value = 500;
+          break;
+        case '3':
+          range_value = 1000;
+          break;
+        case '4':
+          range_value = 2000;
+          break;
+        case '5':
+          range_value = 3000;
+          break;
+        default:
+      }
+    %>
+    <p class='pupup-query'><span> 現在地</span>[緯度:<%=latitude%> 経度:<%=longitude%>] <span> 検索半径</span> [<%=range_value%>m] <br><span> フリーワード </span>[ <%=decodeURI(freeword)%> ]</p>
+    <button class="popup-button"type="button"><a href="/index">検索条件を変える</a></button>
+    </div>
+  <div class="backTop">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <form class="form-toResult" action="/result" method="post" accept-charset="UTF-8">
+      <input class="form-latitude" type="text" name="latitude" value = "<%= latitude %>" readonly hidden>
+      <input class="form-longitude" type="text" name="longitude" value = "<%= longitude %>"  readonly hidden>
+      <input class="form-range" type="text" name="range" value = "<%= range %>" readonly hidden>
+      <input class="form-offset_page" type="text" name="offset_page" value = "<%=offset_page %>" readonly hidden>
+      <input class="form-input-freeword" type="text" name="freeword" value = "<%=decodeURI(freeword)%>" hidden>
+  </form>
+
+  <main class="detail-main">
+
+    <div class="detail-restaurant">
+      <p class="restaurant-cat"><%= rest[0].category %></p>
+      <div class="detail-title">
+        <h2><%= rest[0].name %></h2>
+        <p class="detail-pr"><%if(!rest[0].pr){%><%=rest[0].pr%>
+          <%}%></p>
+      </div>
+      <div class="detail-info">
+        <div class="detail-img-container">
+          <div class="detail-main-img"></div>
+          <%if(rest[0].imgs.length >= 1){%>
+          <div class="detai-img-sub-container">
+            <%for(let i=0;i<4;i++){
+                if(rest[0].imgs[i]){%>
+                <div class="detail-sub-img" style = "background-image: url('<%= rest[0].imgs[i] %>');"></div>
+              <%}}%>
+          </div>
+          <%}else{%>
+            <div class="detail-main-img" style = "background-image: url('img/sample.png');"></div>
+          <%}%>
+        </div>
+        <table class="detail-table">
+          <tr>
+            <td>店名</td>
+            <td class="detail-name"><%= rest[0].name %></td>
+          </tr>
+          <tr>
+            <td>営業時間</td>
+            <td class="detail-opentime"><%= rest[0].opentime %></td>
+          </tr>
+          <tr>
+            <td>電話</td>
+            <td class="detail-tel"><%= rest[0].tel %></td>
+          </tr>
+          <tr>
+            <td>アクセス</td>
+            <td class="detail-access"><%= rest[0].access %></td>
+          </tr>
+          <tr>
+            <td>URL</td>
+            <td class="detail-url"><a href="<%= rest[0].url %>"><%= rest[0].url %></a></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td class="detail-address"><a href = "<%='https://www.google.com/maps/search/?api=1&query=' + rest[0].address %>"><%= rest[0].address %></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="detail-back-outer">
+      <div class="detail-back-btn">
+        <p>一覧に戻る</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Copyright &copy; Yuya Mitsui  All Rights Reserved.</p>
+    <p>
+      Supported by <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">ぐるなびWebService</a>
+    </p>
+  </footer>
+
+  <%-'<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>'%>
+  <%-'<script src="js/scroll-event.js"></script>'%>
+  <%-'<script src="js/detail.js"></script>'%>
+</body>
+</html>

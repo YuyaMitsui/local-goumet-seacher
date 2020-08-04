@@ -1,5 +1,3 @@
-<%= console.log(rest[0].name+" "+rest[0].imgs); %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,38 +6,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="css/html5-doctor-reset-1.6.1.css">
   <link rel="stylesheet" href="css/result.css">
-  <script src="https://kit.fontawesome.com/02fee29c1b.js" crossorigin="anonymous"></script>
+  <%- '<script src="https://kit.fontawesome.com/02fee29c1b.js" crossorigin="anonymous"></script>' %>
+
+
 </head>
 <body class="search-body">
   <header>
     <div class="">
-      <h1>ぐるなび ローカル検索</h1>
-      <p>GURUNAVI local search</p>
+      <h1>ローカルグルメ検索</h1>
+      <p>Local-Goumet-Seacher</p>
     </div>
   </header>
   <div class="popup-fix">
-    <button class="popup-button"type="button"><a href="index.html">検索条件を変える</a></button>
+    <%
+      let range_value = ""; //デフォルト
+      switch (range) {
+        case '1':
+          range_value = 300;
+          break;
+        case '2':
+          range_value = 500;
+          break;
+        case '3':
+          range_value = 1000;
+          break;
+        case '4':
+          range_value = 2000;
+          break;
+        case '5':
+          range_value = 3000;
+          break;
+        default:
+      }
+    %>
+    <p class='pupup-query'><span> 現在地</span>[緯度:<%=latitude%> 経度:<%=longitude%>] <span> 検索半径</span> [<%=range_value%>m] <br><span> フリーワード </span>[ <%=freeword%> ]</p>
+
+    <button class="popup-button"type="button"><a href="/index">検索条件を変える</a></button>
     </div>
   <div class="backTop">
     <i class="fas fa-chevron-up"></i>
   </div>
 
+  <form class="form-toResult" action="/result" method="post" accept-charset="UTF-8">
+      <input class="form-latitude" type="text" name="latitude" value = "<%= latitude %>" readonly hidden>
+      <input class="form-longitude" type="text" name="longitude" value = "<%= longitude %>"  readonly hidden>
+      <input class="form-range" type="text" name="range" value = "<%= range %>" readonly hidden>
+      <input class="form-offset_page" type="text" name="offset_page" value = "<%=offset_page %>" readonly hidden>
+      <input class="form-input-freeword" type="text" name="freeword" value = "<%=freeword %>" hidden>
+  </form>
+
+  <form class="form-toDetail" action="/detail" method="post" accept-charset="UTF-8">
+      <input class="form-latitude" type="text" name="latitude" value = "<%= latitude %>" readonly hidden>
+      <input class="form-longitude" type="text" name="longitude" value = "<%= longitude %>"  readonly hidden>
+      <input class="form-range" type="text" name="range" value = "<%= range %>" readonly hidden>
+      <input class="form-offset_page" type="text" name="offset_page" value = "<%=offset_page %>" readonly hidden>
+      <input class="form-input-freeword" type="text" name="freeword" value = "<%=freeword %>" hidden>
+      <input class="form_shop_id" type="text" name="id" hidden>
+  </form>
+
   <main class="result-main">
-    <p class="hit-cnt">全--件<span>(1～10件)</span></p>
+    <p class="hit-cnt">全<span class = "pagecnt"><%= total_hit_count %></span>件<span>(1～10件)</span></p>
+    <!-- ページネーション -->
     <div class="pagenation-outer">
       <ul class="pagenation-inner">
         <li class="pagectrl-pre"> < </li>
+
+        <%
+          now_page = parseInt(offset_page);
+        %>
+        <%if(total_pages < 5){
+          for(let i = 1;i<=total_pages;i++){%>
+          <li class="page_num"><%= i %></li>
+        <%}}
+        else if(now_page < 1 + 2){
+          //最初から1番目or2番目
+          for(let i = 1;i <= 5;i++){ %>
+            <li class="page_num"><%= i %></li>
+
+        <%}}
+        else if(now_page > total_pages - 2){
+          //最後から1番目or2番目
+          for(let i = total_pages - 4;i <= total_pages;i++){ %>
+            <li class="page_num"><%= i %></li>
+        <%}}
+        else{
+          //選択したページに前後2ページ存在するなら
+          for(let i = now_page - 2;i <= now_page + 2;i++){ %>
+            <li class="page_num"><%= i %></li>
+        <%}}%>
         <li class="pagectrl-nxt"> > </li>
       </ul>
     </div>
+
+    <!-- レストラン情報表示部分 -->
     <div class="restaurants-container">
+      <% rest.map(item =>{%>
+        <div class="restaurant">
+          <p class= "shop_id_hidden" style = "display: none;" ><%=item.shop_id%></p>
+          <p class="restaurant-cat"><%= item.category %></p>
+          <div class="restaurant-thumb" style = "background-image: url('<%=
+            item.imgs.length == 0 ? "img/sample.png": item.imgs[0]
+           %>');"></div>
+          <div class="restaurant-inner-detail">
+            <div class="restaurant-title">
+              <h2><%= item.name %></h2>
+              <p class="restaurant-pr"><%= item.pr != "" ? item.pr : ''; %></p>
+            </div>
+            <%if(item.opentime != ""){%>
+            <div class="restaurant-opentime restaurant-info">
+              <img src="img/clock.png" alt="">
+              <p><%=item.opentime%></p>
+            </div>
+            <%}%>
+            <%if(item.access != " " && item.access != ""){%>
+              <div class="restaurant-access restaurant-info">
+                <img src="img/train.png" alt="">
+                <p><%= item.access %></p>
+              </div>
+            <%}%>
+            <%if(item.address != ""){%>
+              <div class="restaurant-address restaurant-info">
+                <img src="img/map.png" alt="">
+                <p><%= item.address %></p>
+              </div>
+            <%}%>
+        </div>
+      </div>
+      <%});%>
     </div>
+
+    <!-- ページネーション(上のものと同じ) -->
     <div class="pagenation-outer">
       <ul class="pagenation-inner">
         <li class="pagectrl-pre"> < </li>
+
+        <%
+          now_page = parseInt(offset_page);
+        %>
+        <%if(total_pages < 5){
+          for(let i = 1;i<=total_pages;i++){%>
+          <li class="page_num"><%= i %></li>
+        <%}}
+        else if(now_page < 1 + 2){
+          //最初から1番目or2番目
+          for(let i = 1;i <= 5;i++){ %>
+            <li class="page_num"><%= i %></li>
+
+        <%}}
+        else if(now_page > total_pages - 2){
+          //最後から1番目or2番目
+          for(let i = total_pages - 4;i <= total_pages;i++){ %>
+            <li class="page_num"><%= i %></li>
+        <%}}
+        else{
+          //選択したページに前後2ページ存在するなら
+          for(let i = now_page - 2;i <= now_page + 2;i++){ %>
+            <li class="page_num"><%= i %></li>
+        <%}}%>
         <li class="pagectrl-nxt"> > </li>
       </ul>
     </div>
+
   </main>
 
   <footer>
@@ -49,8 +176,9 @@
     </p>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="js/scroll-event.js"></script>
-  <!-- <script src="js/result.js"></script> -->
+  <%- '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>'  %>
+  <%- '<script src="js/scroll-event.js"></script>' %>
+  <%- '<script src="js/result.js"></script>' %>
+
 </body>
 </html>

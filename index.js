@@ -175,10 +175,6 @@ server.on('request', function(req, res) {
         if(search_params.freeword != '' && is_result){
           search_params.freeword = decodeURI(search_params.freeword);
         }
-        if(is_result){
-          search_params["latitude"] = '35.658546';
-          search_params["longitude"] = '139.700450';
-        }
         let params_toSearch = Object.keys(search_params).map(function(key) {
           return key + '=' + search_params[key];
         }).join('&');

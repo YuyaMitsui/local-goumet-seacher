@@ -1,0 +1,147 @@
+@import url("layout.css");
+main{
+  padding: 0 25% 2rem;
+  box-sizing: border-box;
+  height: 79vh;
+}
+.main-alert{
+  position: relative;
+  text-align: center;
+  line-height: 3rem;
+  font-size: .7rem;
+  color: #F16565;
+  opacity: 0;
+  pointer-events: none;
+}
+.main-alert.active{
+  opacity: 1;
+  pointer-events: auto;
+  transition: .3s;
+}
+.main-alert img{
+  width: 2.5rem;
+  height: auto;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.main-alert img:hover{
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  transition: .2s;
+}
+.main-alert img:active{
+  box-shadow: none;
+  transition: .1s;
+}
+.main-search{
+  background-color: #D1D1D1;
+  border-radius: 15px;
+  padding: 7% 10% 5%;
+  text-align:center;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+}
+.main-search-title{
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.main-search-form{
+  padding: 0 15%;
+}
+.main-search-form p:not(:last-child){
+  margin-bottom: 1rem;
+}
+.form-input-LatLog{
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.form-input-LatLog input{
+  margin-bottom: 1rem;
+  width: 45%;
+  color: rgba(38,38,38,0.7);
+  background-color: #E4E4E4;
+  border: none;
+  border-radius: 15px;
+  height: 1.5rem;
+  padding-left: 1em;
+  font-size: 0.6rem;
+}
+.form-input-LatLog::before{
+  content: "緯度";
+}
+.form-input-LatLog::after{
+  content: "経度";
+  left: 51%;
+}
+.form-input-LatLog::before,.form-input-LatLog::after{
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.7rem;
+  top: -0.8rem;
+}
+.form-input-range{
+  font-size: 0.7rem;
+  color: rgba(38,38,38,0.7);
+  border: none;
+  border-radius: 15px;
+  height: 2rem;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-left: 1em;
+}
+.form-input-range::before{
+  content: "aaa";
+}
+.range-container{
+  position: relative;
+}
+.range-container::before{
+  content: '\f078';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-family:'Font Awesome 5 Free';
+  font-weight: 900;
+  top:0;
+  bottom:0;
+  right:1rem;
+  margin: auto;
+  color: rgba(38,38,38,0.7);
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+}
+.form-input-freeword{
+  font-size: 0.7rem;
+  color: rgba(38,38,38,0.7);
+  border: none;
+  border-radius: 15px;
+  height: 2rem;
+  width: 100%;
+  padding-left: 1em;
+  box-sizing: border-box;
+}
+.form-submit{
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #F16565;
+  border: none;
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  width: 4em;
+  height: 2em;
+  margin: auto;
+}
+.form-submit:active{
+  opacity: .8;
+}

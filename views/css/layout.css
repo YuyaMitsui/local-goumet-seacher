@@ -1,0 +1,165 @@
+html,body{
+  background-color: #E8E8E8;
+  font-size: 30px;
+  color: #303030;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+li{
+  list-style: none;
+}
+input:focus,select:focus,button:focus{
+    outline: none;
+}
+input::-moz-focus-inner,select::-moz-focus-inner,button::-moz-focus-inner{ /*Firefox用*/
+    border: none;
+}
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F16565;
+  text-align: center;
+  color: #FFF;
+  height: 15vh;
+  box-shadow: 5px 5px 10px rgba(112,112,112,0.3);
+}
+header p{
+  font-size: .7rem;
+}
+footer{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 25%;
+  font-size: .5rem;
+  height: 6vh;
+  color: #FFF;
+  background-color: #F16565;
+  box-shadow: 0px -5px 10px rgba(0,0,0,0.3);
+}
+footer p{
+  line-height: 6vh;
+}
+footer a{
+  color: black;
+  text-decoration: underline;
+}
+
+/*以下result.html detail.htmlのスタイル*/
+.popup-fix{
+  width: 100%;
+  height: 4rem;
+  box-shadow: 0 0px 10px rgba(112,112,112,0.3);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  box-sizing: border-box;
+}
+.popup-fix.fixed{
+  position: fixed;
+  z-index: 100;
+  -webkit-transform: translateZ(0);
+  top:0;
+}
+.pupup-query{
+  font-size: .7rem;
+  line-height: 1.7em;
+}
+.pupup-query span{
+  font-weight: bold;
+  color: #F16565;
+}
+.popup-button{
+  font-size: .7rem;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #F16565;
+  border: none;
+  color: #FFF;
+  font-weight: bold;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  height: 2rem;
+  width: 20%;
+  padding: 0;
+}
+.popup-button a{
+  display: inline-block;
+  color: #FFF;
+  width: 100%;
+  height: 100%;
+  line-height: 2rem;
+}
+.popup-button:active{
+  opacity: .8;
+}
+.backTop{
+  background-color: #262626;
+  opacity: 0.8;
+  display: inline-block;
+  height: 3em;
+  width: 3em;
+  font-size: 1rem;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  right: -3rem;
+  bottom: 10%;
+  color: #FFF;
+  cursor: pointer;
+  transition: .3s;
+}
+.backTop.active{
+  right: 0;
+  transition: .3s;
+}
+.backTop i{
+  text-align: center;
+  display: block;
+  line-height: 3rem;
+}
+.backTop:hover{
+  opacity: 1;
+  transition: .3s;
+}
+.backTop:active{
+  opacity: 0.8;
+}
+.restaurant-cat{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: #F16565;
+  font-size: .5rem;
+  border-radius: 30px;
+  border: 1px solid #F16565;
+  line-height: 1.3em;
+  padding: .3em 1em;
+  padding-left: 2em;
+  cursor: pointer;
+}
+.restaurant-cat::before{
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #F16565;
+  top: 0;
+  bottom: 0;
+  left: 0.5em;
+  margin: auto;
+}
+.restaurant-cat:hover{
+  color: #FFF;
+  background-color: #F16565;
+  transition: .2s;
+}
+.restaurant-cat:hover::before{
+  background-color: #FFF;
+}
+.restaurant-cat:active{
+  opacity: .8;
+}

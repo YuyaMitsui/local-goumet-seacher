@@ -1,0 +1,142 @@
+@import url("layout.css");
+main{
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 5% 15%;
+}
+main.fixed{
+  margin-top: 4rem;
+}
+.detail-restaurant{
+  width: 100%;
+  background-color: #FFF;
+  border-radius: 15px;
+  position: relative;
+  padding: 3rem 3rem;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  margin-bottom: 1.5rem;
+}
+.detail-title{
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+.detail-title h2{
+  margin-bottom: .5rem;
+}
+.detail-pr{
+  font-size: .8rem;
+  line-height: 1.3em;
+  width: 70%;
+}
+.detail-info{
+  display: flex;
+  justify-content: space-between;
+}
+.detail-img-container{
+  width: 35%;
+}
+.detail-main-img{
+  width: 100%;
+  min-height: 15vw;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: .5rem;
+  box-shadow: 0px 5px 10px rgba(0,0,0,.3);
+  background-image: url(../img/sample.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.detail-main-img img{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.detai-img-sub-container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.detail-sub-img{
+  width: 23%;
+  height: 3.5vw;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0,0,0,.3);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.detail-sub-img:not(:last-child){
+  margin-right: 2.6%;
+}
+.detail-sub-img:hover{
+  opacity: 0.8;
+  transition: .3s;
+}
+.detail-sub-img:active{
+  opacity: 1;
+}
+.detail-sub-img img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.detail-table{
+  width: 60%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.detail-table a:hover{
+  text-decoration: underline;
+}
+.detail-table td{
+  font-size: .5rem;
+  border: 1px solid #B2B2B2;
+  padding: .7rem .5rem;
+  word-wrap: break-word;
+}
+.detail-table td:first-child{
+  font-weight: bold;
+  background-color: #E8E8E8;
+  width: 20%;
+}
+.detail-address a:hover{
+  text-decoration: underline;
+}
+.detail-back-outer{
+  text-align: right;
+}
+.detail-back-btn{
+  display: inline-block;
+  font-size: .7rem;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #F16565;
+  color: #FFF;
+  font-weight: bold;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  padding: 0 2em;
+  height: 2rem;
+}
+.detail-back-btn p{
+  line-height: 2rem;
+}
+.detail-back-btn:active{
+  opacity: .8;
+}

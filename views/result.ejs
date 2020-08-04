@@ -1,0 +1,56 @@
+<%= console.log(rest[0].name+" "+rest[0].imgs); %>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>ぐるなびローカル検索</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="css/html5-doctor-reset-1.6.1.css">
+  <link rel="stylesheet" href="css/result.css">
+  <script src="https://kit.fontawesome.com/02fee29c1b.js" crossorigin="anonymous"></script>
+</head>
+<body class="search-body">
+  <header>
+    <div class="">
+      <h1>ぐるなび ローカル検索</h1>
+      <p>GURUNAVI local search</p>
+    </div>
+  </header>
+  <div class="popup-fix">
+    <button class="popup-button"type="button"><a href="index.html">検索条件を変える</a></button>
+    </div>
+  <div class="backTop">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <main class="result-main">
+    <p class="hit-cnt">全--件<span>(1～10件)</span></p>
+    <div class="pagenation-outer">
+      <ul class="pagenation-inner">
+        <li class="pagectrl-pre"> < </li>
+        <li class="pagectrl-nxt"> > </li>
+      </ul>
+    </div>
+    <div class="restaurants-container">
+    </div>
+    <div class="pagenation-outer">
+      <ul class="pagenation-inner">
+        <li class="pagectrl-pre"> < </li>
+        <li class="pagectrl-nxt"> > </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>Copyright &copy; Yuya Mitsui  All Rights Reserved.</p>
+    <p>
+      Supported by <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">ぐるなびWebService</a>
+    </p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="js/scroll-event.js"></script>
+  <!-- <script src="js/result.js"></script> -->
+</body>
+</html>

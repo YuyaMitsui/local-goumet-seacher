@@ -1,0 +1,99 @@
+@import url("layout.css");
+main{
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 3% 15%;
+}
+main.fixed{
+  margin-top: 4rem;
+}
+body{
+  position: relative; /*backTop用*/
+}
+.hit-cnt{
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.hit-cnt span{
+  font-size: .5rem;
+}
+.pagenation-outer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.pagenation-inner{
+  display: flex;
+}
+.pagenation-inner li{
+  text-align: center;
+  font-size: 0.8rem;
+  width: 1.5em;
+  line-height: 2em;
+  color: #FFF;
+  background-color: #262626;
+  cursor: pointer;
+  transition: .2s;
+}
+.pagenation-inner li:hover{
+  background-color: #FFF;
+  color: #262626;
+  transition: .2s;
+}
+.pagenation-inner li:not(:last-child){
+  margin-right: 0.7em;
+}
+.restaurants-container{
+  width: 100%;
+  padding: 3rem 0;
+}
+.restaurant{
+  display: flex;
+  position: relative;
+  background-color: #FFF;
+  border-radius: 15px;
+  justify-content: space-between;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  transition: .2s;
+  cursor: pointer;
+}
+.restaurant:not(:last-child){
+  margin-bottom: 2rem;
+}
+.restaurant:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+  transition: .2s;
+}
+.restaurant:active{
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+.restaurant-thumb{
+  width: 45%;
+  background-image: url("../img/sample.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+}
+.restaurant-inner-detail{
+  padding: 3rem 3rem 2rem .5rem;
+  width: 55%;
+  box-sizing: border-box;
+}
+.restaurant-title{
+  margin-bottom: 2.5rem;
+}
+.restaurant-title h2{
+  font-size: 1.3rem;
+}
+.restaurant-info{
+  display: flex;
+  font-size: 0.7rem;
+  /* line-height: 1.2em; */
+  margin-bottom: .5em;
+  align-items: center;
+}
+.restaurant-info img{
+  height: 1.5rem;
+  margin-right: 1em;
+}

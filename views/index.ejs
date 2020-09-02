@@ -1,11 +1,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>ぐるなびローカル検索</title>
+    <title>ローカルグルメ検索</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/html5-doctor-reset-1.6.1.css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
 
     <script src="https://kit.fontawesome.com/02fee29c1b.js" crossorigin="anonymous"></script>
 
@@ -13,22 +13,24 @@
   <body class="search-body">
     <header>
       <div class="">
-        <h1>ぐるなび ローカル検索</h1>
-        <p>GURUNAVI local search</p>
+        <h1>ローカルぐるめ検索</h1>
+        <p>local goumet searcher</p>
       </div>
     </header>
     <main>
       <div class="main-alert">
         <p class="alert-message">※位置情報サービスの使用を許可してください。</p>
-        <img class="alert-reload" src="img/reload.png" alt="再読み込み用のアイコン">
       </div>
       <div class="main-search">
         <h2 class="main-search-title">現在地周辺のレストラン情報を検索</h2>
         <form class="main-search-form" action="/result" method="post" accept-charset="UTF-8">
           <div class="form-input-LatLog">
-            <input class="form-latitude" type="text" name="latitude" readonly>
-            <input class="form-longitude" type="text" name="longitude" readonly>
+            <input class="form-latitude" type="text" name="latitude" readonly required>
+            <input class="form-longitude" type="text" name="longitude" readonly required>
           </div>
+          <p class="get-loc-container">
+            <button type="button" class="get-location"> <img src="img/globe.png" alt=""> <p>位置情報を取得</p></button>
+          </p>
           <p class="range-container">
             <select class="form-input-range" name="range" required>
               <option value="">検索半径(m)</option>

@@ -150,8 +150,8 @@ server.on('request', function(req, res) {
         response = fs.readFileSync('./views/detail.ejs', 'utf-8');
         break;
         default:
-          res.writeHead(404);
-          res.end("指定されたページは見つかりません");
+        res.writeHead(404);
+        res.end("指定されたページは見つかりません");
       }
 
       //----------POSTされたパラメータを一時的にオブジェクト型に
@@ -160,6 +160,7 @@ server.on('request', function(req, res) {
       let paramsforDetail = {};//Detail送信用の検索条件情報
       if(is_result){search_params['offset_page'] = 1;}
       let Search_req_url = '';
+
       if(Object.keys(data).length){
         querys = data.split("&");
         querys.forEach((element) => {
@@ -194,47 +195,47 @@ server.on('request', function(req, res) {
             data.freeword = search_params.freeword;
           }
           else{
-          data.offset_page = paramsforDetail.offset_page;
-          data.latitude = paramsforDetail.latitude;
-          data.longitude = paramsforDetail.longitude;
-          data.range = paramsforDetail.range;
-          data.freeword = paramsforDetail.freeword;
+            data.offset_page = paramsforDetail.offset_page;
+            data.latitude = paramsforDetail.latitude;
+            data.longitude = paramsforDetail.longitude;
+            data.range = paramsforDetail.range;
+            data.freeword = paramsforDetail.freeword;
           }
           out = ejs.render(response, data);
           res.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'});
           res.end(out);
         });
-    });
-  }
+      });
+    }
 
-  else if(req.method == "GET"){
-    switch (url) {
-      case '/index':
-      case '/':
-      html_requested = true;
-      response = fs.readFileSync('./views/index.ejs', 'utf-8');
-      break;
-      default:
-      url = "./views" + url;
-      response = url;
-    }
-    let out;
-    if(html_requested == true){
-      out = ejs.render(response, data);
-      res.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'});
-    }
-    else {
-      out = fs.readFileSync(response,'utf-8');
-      if(getType(response).indexOf('image') != -1){
-        out = fs.readFileSync(response,'binary');
+    else if(req.method == "GET"){
+      switch (url) {
+        case '/index':
+        case '/':
+        html_requested = true;
+        response = fs.readFileSync('./views/index.ejs', 'utf-8');
+        break;
+        default:
+        url = "./views" + url;
+        response = url;
       }
-      res.writeHead(200, {'Content-Type': getType(response)+'; charset=UTF-8'});
+      let out;
+      if(html_requested == true){
+        out = ejs.render(response, data);
+        res.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'});
+      }
+      else {
+        out = fs.readFileSync(response,'utf-8');
+        if(getType(response).indexOf('image') != -1){
+          out = fs.readFileSync(response,'binary');
+        }
+        res.writeHead(200, {'Content-Type': getType(response)+'; charset=UTF-8'});
+      }
+      if(getType(response).indexOf('image') != -1){
+        res.end(out,'binary');
+      }
+      res.end(out);
     }
-    if(getType(response).indexOf('image') != -1){
-      res.end(out,'binary');
-    }
-    res.end(out);
-  }
-});
+  });
 
 server.listen(process.env.PORT || 8080);

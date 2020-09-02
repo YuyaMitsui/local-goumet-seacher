@@ -7,7 +7,7 @@ main{
 .main-alert{
   position: relative;
   text-align: center;
-  line-height: 3rem;
+  line-height: 2rem;
   font-size: .7rem;
   color: #F16565;
   opacity: 0;
@@ -61,7 +61,7 @@ main{
   position: relative;
 }
 .form-input-LatLog input{
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   width: 45%;
   color: rgba(38,38,38,0.7);
   background-color: #E4E4E4;
@@ -84,6 +84,36 @@ main{
   font-size: 0.7rem;
   top: -0.8rem;
 }
+.get-loc-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.get-location{
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  border: none;
+  border-radius: 15px;
+  padding: .5rem .7rem;
+  font-size: .6rem;
+  background-color: #FFF;
+  width: auto;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.get-location img{
+  width: 1.1rem;
+  margin-right: .5rem;
+}
+.get-location p{
+  line-height: 1.1rem;
+  font-weight: bold;
+  color: #444444;
+}
+.get-location:active{
+  opacity: .8;
+}
 .form-input-range{
   font-size: 0.7rem;
   color: rgba(38,38,38,0.7);
@@ -96,9 +126,6 @@ main{
   appearance: none;
   cursor: pointer;
   padding-left: 1em;
-}
-.form-input-range::before{
-  content: "aaa";
 }
 .range-container{
   position: relative;

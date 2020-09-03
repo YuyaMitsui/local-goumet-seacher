@@ -27,17 +27,24 @@ body{
   display: flex;
 }
 .pagenation-inner li{
-  text-align: center;
   font-size: 0.8rem;
   width: 1.5em;
   line-height: 2em;
-  color: #FFF;
   background-color: #262626;
   cursor: pointer;
+  transition: .2s;
+  text-align: center;
+}
+.pagenation-inner li a{
+  display: block;
+  color: #FFF;
   transition: .2s;
 }
 .pagenation-inner li:hover{
   background-color: #FFF;
+  transition: .2s;
+}
+.pagenation-inner li:hover a{
   color: #262626;
   transition: .2s;
 }
@@ -56,6 +63,14 @@ body{
   justify-content: space-between;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
   transition: .2s;
+  cursor: pointer;
+}
+.restaurant-detail-link{
+  border-radius: 15px;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 }
 .restaurant:not(:last-child){
@@ -89,7 +104,6 @@ body{
 .restaurant-info{
   display: flex;
   font-size: 0.7rem;
-  /* line-height: 1.2em; */
   margin-bottom: .5em;
   align-items: center;
 }

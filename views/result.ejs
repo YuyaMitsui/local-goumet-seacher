@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="css/html5-doctor-reset-1.6.1.css">
   <link rel="stylesheet" href="css/result.css">
   <%- '<script src="https://kit.fontawesome.com/02fee29c1b.js" crossorigin="anonymous"></script>' %>
-
-
 </head>
 <body class="search-body">
+  <div class="loader-wrap">
+    <div class="loader">Loading...</div>
+  </div>
   <header>
     <div class="">
       <h1>ローカルグルメ検索</h1>
@@ -69,32 +70,32 @@
     <!-- ページネーション -->
     <div class="pagenation-outer">
       <ul class="pagenation-inner">
-        <li class="pagectrl-pre"> < </li>
+        <li class="pagectrl-pre"> <a href="#"> < </a> </li>
 
         <%
           now_page = parseInt(offset_page);
         %>
         <%if(total_pages < 5){
           for(let i = 1;i<=total_pages;i++){%>
-          <li class="page_num"><%= i %></li>
+          <li class="page_num"> <a href="#"> <%= i %> </a> </li>
         <%}}
         else if(now_page < 1 + 2){
           //最初から1番目or2番目
           for(let i = 1;i <= 5;i++){ %>
-            <li class="page_num"><%= i %></li>
+            <li class="page_num"> <a href="#"> <%= i %> </a> </li>
 
         <%}}
         else if(now_page > total_pages - 2){
           //最後から1番目or2番目
           for(let i = total_pages - 4;i <= total_pages;i++){ %>
-            <li class="page_num"><%= i %></li>
+            <li class="page_num"> <a href="#"> <%= i %> </a> </li>
         <%}}
         else{
           //選択したページに前後2ページ存在するなら
           for(let i = now_page - 2;i <= now_page + 2;i++){ %>
-            <li class="page_num"><%= i %></li>
+            <li class="page_num"> <a href="#"> <%= i %> </a> </li>
         <%}}%>
-        <li class="pagectrl-nxt"> > </li>
+        <li class="pagectrl-nxt"> <a href="#"> > </a>  </li>
       </ul>
     </div>
 
@@ -103,7 +104,8 @@
       <% rest.map(item =>{%>
         <div class="restaurant">
           <p class= "shop_id_hidden" style = "display: none;" ><%=item.shop_id%></p>
-          <p class="restaurant-cat"><%= item.category %></p>
+          <a href="#" class="restaurant-detail-link"></a>
+          <a href="#" class="restaurant-cat"><%= item.category %></a>
           <div class="restaurant-thumb" style = "background-image: url('<%=
             item.imgs.length == 0 ? "img/sample.png": item.imgs[0]
            %>');"></div>
@@ -138,32 +140,32 @@
     <!-- ページネーション(上のものと同じ) -->
     <div class="pagenation-outer">
       <ul class="pagenation-inner">
-        <li class="pagectrl-pre"> < </li>
+        <li class="pagectrl-pre"> <a href="#"> < </a> </li>
 
         <%
           now_page = parseInt(offset_page);
         %>
         <%if(total_pages < 5){
           for(let i = 1;i<=total_pages;i++){%>
-          <li class="page_num"><%= i %></li>
+          <li class="page_num"> <a href="#"> <%= i %> </a> </li>
         <%}}
         else if(now_page < 1 + 2){
           //最初から1番目or2番目
           for(let i = 1;i <= 5;i++){ %>
-            <li class="page_num"><%= i %></li>
+            <li class="page_num"> <a href="#"> <%= i %> </a> </li>
 
         <%}}
         else if(now_page > total_pages - 2){
           //最後から1番目or2番目
           for(let i = total_pages - 4;i <= total_pages;i++){ %>
-            <li class="page_num"><%= i %></li>
+            <li class="page_num"> <a href="#"> <%= i %> </a> </li>
         <%}}
         else{
           //選択したページに前後2ページ存在するなら
           for(let i = now_page - 2;i <= now_page + 2;i++){ %>
-            <li class="page_num"><%= i %></li>
+            <li class="page_num"> <a href="#"> <%= i %> </a> </li>
         <%}}%>
-        <li class="pagectrl-nxt"> > </li>
+        <li class="pagectrl-nxt"> <a href="#"> > </a>  </li>
       </ul>
     </div>
 
@@ -177,6 +179,7 @@
   </footer>
 
   <%- '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>'  %>
+  <%- '<script src="js/load.js"></script>' %>
   <%- '<script src="js/scroll-event.js"></script>' %>
   <%- '<script src="js/result.js"></script>' %>
 

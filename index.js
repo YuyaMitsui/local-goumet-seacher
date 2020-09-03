@@ -33,10 +33,10 @@ function getType(_url) {
 //----------ぐるなびAPIにリクエスト
 function get_restsdata(Search_req_url,is_result){
   return new Promise(function (resolve) {
-
     let api_response = {};
     api_response.rest = [];
     let restaurants_id = [];
+
     //---レストラン検索APIへリクエスト
     https.get(Search_req_url, function(apiRes) {
       let body_search = '';
@@ -44,15 +44,14 @@ function get_restsdata(Search_req_url,is_result){
         body_search += chunk;
       });
       apiRes.on('end', function() {
-        let search_result = JSON.parse(body_search);
         //---検索結果(ヒット数・現在ページ)をオブジェクトに格納
+        let search_result = JSON.parse(body_search);
         if(is_result){
           //ヒット数・ページ数
           api_response.total_hit_count = search_result.total_hit_count;
           let pages_cnt = Math.floor(search_result.total_hit_count / 10);
           if(search_result.total_hit_count % 10 != 0){pages_cnt++;}
           api_response.total_pages =  pages_cnt;
-
           //現在ページ
           api_response.page_offset = search_result.page_offset;
         }
@@ -107,21 +106,26 @@ function get_restsdata(Search_req_url,is_result){
               if(!('gnavi' in review_result)){ //エラー判定
                 let review_hit_count = review_result.response.total_hit_count;
                 for(let j = 0;j < review_hit_count;j++){
-                  if (review_result.response[j].photo.image_url.url_320 != "") {
-                    api_response.rest[i].imgs.push(review_result.response[j].photo.image_url.url_320);
-                    cnt++;
+                  if(review_result.response[j]){
+                    if (review_result.response[j].photo.image_url.url_320 != "") {
+                      api_response.rest[i].imgs.push(review_result.response[j].photo.image_url.url_320);
+                      cnt++;
+                    }
                   }
                 }
-                //終了条件(非同期なのでこれを行わないとループ途中で値を渡す)
+                //非同期の処理順序の制御ができなかったのでsetTimeoutで妥協して調整
                 if(i == restaurants_id.length - 1){
-                  resolve(api_response);
+                  setTimeout(function(){
+                    resolve(api_response);
+                  },300);
                 }
               }else{
                 if(i == restaurants_id.length - 1){
-                  resolve(api_response);
+                  setTimeout(function(){
+                    resolve(api_response);
+                  },300);
                 }
               }
-
             })
           })
         }

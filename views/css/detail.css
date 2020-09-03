@@ -134,8 +134,9 @@ main.fixed{
   padding: 0 2em;
   height: 2rem;
 }
-.detail-back-btn p{
+.detail-back-btn a{
   line-height: 2rem;
+  color: #FFF;
 }
 .detail-back-btn:active{
   opacity: .8;

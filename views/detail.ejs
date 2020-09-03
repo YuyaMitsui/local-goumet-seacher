@@ -40,7 +40,7 @@
         default:
       }
     %>
-    <p class='pupup-query'><span> 現在地</span>[緯度:<%=latitude%> 経度:<%=longitude%>] <span> 検索半径</span> [<%=range_value%>m] <br><span> フリーワード </span>[ <%=decodeURI(freeword)%> ]</p>
+    <p class='pupup-query'><span class= "indent"><span> 現在地</span>[緯度:<%=latitude%> 経度:<%=longitude%>]</span> <span class= "indent"><span> 検索半径</span> [<%=range_value%>m] </span> <span class= "indent"><span> フリーワード </span>[ <%=decodeURI(freeword)%> ]</span></p>
     <button class="popup-button"type="button"><a href="/index">検索条件を変える</a></button>
     </div>
   <div class="backTop">
@@ -66,6 +66,7 @@
       </div>
       <div class="detail-info">
         <div class="detail-img-container">
+          <div class="nextimg"><i class="fas fa-caret-right"></i></div>
           <%if(rest[0].imgs.length >= 1){%>
           <div class="detail-main-img"></div>
           <div class="detai-img-sub-container">

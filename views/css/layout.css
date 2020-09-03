@@ -10,6 +10,9 @@ a{
 li{
   list-style: none;
 }
+.indent{
+  display: inline-block;
+}
 input:focus,select:focus,button:focus{
     outline: none;
 }
@@ -61,7 +64,7 @@ footer a{
 }
 .popup-fix.fixed{
   position: fixed;
-  z-index: 100;
+  z-index: 150;
   -webkit-transform: translateZ(0);
   top:0;
 }
@@ -69,7 +72,7 @@ footer a{
   font-size: .7rem;
   line-height: 1.7em;
 }
-.pupup-query span{
+.pupup-query span:not(.indent){
   font-weight: bold;
   color: #F16565;
 }
@@ -110,6 +113,7 @@ footer a{
   color: #FFF;
   cursor: pointer;
   transition: .3s;
+  z-index: 10;
 }
 .backTop.active{
   right: 0;
@@ -164,6 +168,56 @@ footer a{
 .restaurant-cat:active{
   opacity: .8;
 }
+
+@media screen and (max-width: 1024px) {
+  footer{
+    height: auto;
+  }
+  footer{
+    display: block;
+    font-size: .4rem;
+    padding: 3% 10% 0;
+  }
+  footer p{
+   text-align: center;
+  }
+  .popup-fix{
+    height: 5rem;
+    display: block;
+    padding: 5%;
+    box-sizing: border-box;
+    background-color: #FFFd;
+  }
+  .pupup-query {
+    text-align: center;
+      font-size: 0.5rem;
+      line-height: 1.3em;
+      margin-bottom: 1em;
+  }
+  .popup-button{
+    display: block;
+    margin: auto;
+    height: 1.7rem;
+    font-size: .5rem;
+    width: 65%;
+  }
+  .popup-button a {
+    line-height: 1.7rem;
+  }
+  .restaurant-cat {
+    right: .5rem;
+    top: .5rem;
+  }
+  .backTop{
+    height: 2rem;
+    width: 2rem;
+    bottom: 5%;
+  }
+  .backTop i{
+    line-height: 2rem;
+  }
+}
+
 
 /*loader 参考 https://recooord.org/loading-animation/
 Single Element Css Spinners (https://projects.lukehaas.me/css-loaders/)

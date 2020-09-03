@@ -1,20 +1,23 @@
 @import url("layout.css");
 main{
-  padding: 0 25% 2rem;
+  padding: 2rem 25%;
   box-sizing: border-box;
   height: 79vh;
+  position: relative;
 }
 .main-alert{
-  position: relative;
+  position: absolute;
   text-align: center;
   line-height: 2rem;
   font-size: .7rem;
   color: #F16565;
-  opacity: 0;
+  display: none;
   pointer-events: none;
+  left: 0;
+  right: 0;
 }
 .main-alert.active{
-  opacity: 1;
+  display: block;
   pointer-events: auto;
   transition: .3s;
 }
@@ -171,4 +174,38 @@ main{
 }
 .form-submit:active{
   opacity: .8;
+}
+@media screen and (max-width: 1024px) {
+  main,footer{
+    height: auto;
+  }
+  main{
+    padding: 0 0;
+  }
+  footer{
+    display: block;
+    font-size: .4rem;
+    padding: 3% 10% 0;
+  }
+  footer p{
+   text-align: center;
+  }
+  .main-alert{
+    font-size: .5rem;
+    top: -1;
+    font-weight: bold;
+  }
+  .main-search{
+    border-radius: 0;
+    padding: 15% 0;
+  }
+  .main-search-title{
+    font-size: .9rem
+  }
+  .main-search-form{
+    padding: 0 5%;
+  }
+  .form-submit{
+    width: 5em;
+  }
 }

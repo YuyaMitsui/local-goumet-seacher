@@ -1,11 +1,6 @@
 $(function(){
   let loc_comfirm = true; //位置情報取得時の確認(初回クリックのみ表示)用変数
 
-  //---------ページ再読み込みボタン
-  $(".alert-reload").click(function(){
-    location.reload();
-  })
-
   $(".get-location").click(function(){
 
     if(loc_comfirm == true){

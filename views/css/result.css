@@ -111,3 +111,53 @@ body{
   height: 1.5rem;
   margin-right: 1em;
 }
+
+@media screen and (max-width: 1024px) {
+  main.fixed{
+    margin-top: 5rem;
+  }
+  main{
+    padding: 15% 5%;
+  }
+  .hit-cnt{
+    text-align: center;
+  }
+  .restaurants-container {
+    padding: 1.5rem 0;
+  }
+  .restaurant{
+    display: block;
+    padding: 2rem 0;
+    box-sizing: border-box;
+  }
+  .restaurant:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  .restaurant-thumb {
+    border-radius: 100%;
+    width: 30vh;
+    height: 30vh;
+    background-size: cover;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .restaurant-inner-detail {
+    padding: 0 10%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .restaurant-title{
+    margin-bottom: 1.5rem;
+  }
+  .restaurant-title h2{
+    font-size: 1rem;
+  }
+  .restaurant-info{
+    font-size: .5rem;
+    margin-bottom: .7em;
+  }
+  .restaurant-detail-link {
+    top: 0;
+    left: 0;
+  }
+}

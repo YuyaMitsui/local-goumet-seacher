@@ -50,6 +50,25 @@ main.fixed{
   background-repeat: no-repeat;
   background-size: cover;
 }
+.nextimg{
+  display: none;
+  color: #FFF;
+  position: absolute;
+  z-index: 1;
+  font-size: 2.5rem;
+  height: 2.5rem;
+  right: .5rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+}
+.nextimg:active{
+  opacity: .8;
+}
+.nextimg i::before{
+  text-shadow: 5px 5px 10px rgba(0,0,0,.8);
+}
 .detail-main-img img{
   width: 100%;
   height: auto;
@@ -140,4 +159,44 @@ main.fixed{
 }
 .detail-back-btn:active{
   opacity: .8;
+}
+@media screen and (max-width: 1024px) {
+  main{
+    padding: 5% 0%;
+  }
+  main.fixed{
+    margin-top: 5rem;
+  }
+  .detail-restaurant {
+    padding: 16% 5%;
+    margin-bottom: 5%;
+  }
+  .detail-back-outer {
+    text-align: center;
+  }
+  .detail-img-container {
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .nextimg{
+    display: inline-block;
+  }
+  .detail-main-img{
+    height: 100%;
+    min-height: 40vw;
+    margin-bottom: 0;
+  }
+  .detail-title {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+  }
+  .detail-table{
+    width: 100%;
+  }
+  .detai-img-sub-container{
+    display: none;
+  }
+
 }

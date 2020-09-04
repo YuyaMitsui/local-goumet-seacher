@@ -21,10 +21,11 @@ $(function(){
     navigator.geolocation.getCurrentPosition(
       //取得成功時
       function(position){
-        // global_position_value['lat'] = position.coords.latitude;
-        // global_position_value['lon'] = position.coords.longitude;
-        global_position_value['lat'] = 35.658654;
-        global_position_value['lon'] = 139.700412;
+        global_position_value['lat'] = position.coords.latitude;
+        global_position_value['lon'] = position.coords.longitude;
+        // 渋谷駅周辺の座標(デバッグ用)
+        // global_position_value['lat'] = 35.658654;
+        // global_position_value['lon'] = 139.700412;
         is_authorized = true;
         $('.form-latitude').val(global_position_value['lat']);
         $('.form-longitude').val(global_position_value['lon']);

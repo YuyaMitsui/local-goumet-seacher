@@ -2,6 +2,7 @@ html,body{
   background-color: #E8E8E8;
   font-size: 30px;
   color: #303030;
+  font-family: sans-serif;
 }
 a{
   text-decoration: none;
@@ -9,6 +10,9 @@ a{
 }
 li{
   list-style: none;
+}
+input{
+    -webkit-appearance: none;
 }
 .indent{
   display: inline-block;

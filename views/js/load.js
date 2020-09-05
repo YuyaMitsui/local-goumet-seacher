@@ -2,8 +2,9 @@
 $(function(){
   let loader = $('.loader-wrap');
 	$(window).on('load',function(){
-    setTimeout(function(){
-      loader.fadeOut();
-    },300);
+    loader.fadeOut();
 	});
+  setTimeout(function(){
+    loader.fadeOut();
+  },300);
 });

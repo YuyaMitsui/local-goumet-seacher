@@ -11,7 +11,7 @@ a{
 li{
   list-style: none;
 }
-input{
+input,select{
     -webkit-appearance: none;
 }
 .indent{
@@ -188,7 +188,7 @@ footer a{
   .popup-fix{
     height: 5rem;
     display: block;
-    padding: 5%;
+    padding: 3%;
     box-sizing: border-box;
     background-color: #FFFd;
   }
